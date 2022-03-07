@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerPlatformerController : PhysicsObject {
 
@@ -9,6 +11,10 @@ public class PlayerPlatformerController : PhysicsObject {
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
+
+    public Text gameOver;
+
+    public bool isOver;
 
     // Use this for initialization
     void Awake () 
@@ -47,10 +53,14 @@ public class PlayerPlatformerController : PhysicsObject {
             }
         }
 
+
+      
+
         animator.SetBool ("grounded", grounded);
         animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
         animator.SetFloat("velocityY", velocity.y);
 
         targetVelocity = move * maxSpeed;
     }
+
 }
